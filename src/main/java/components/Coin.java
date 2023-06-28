@@ -1,3 +1,5 @@
+package components;
+
 public enum Coin {
     FIVE(5),
     TEN(10),

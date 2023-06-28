@@ -1,3 +1,5 @@
+package components;
+
 public class ProductDetails {
 
     private String code;

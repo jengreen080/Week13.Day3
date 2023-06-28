@@ -1,3 +1,6 @@
+import components.ProductDetails;
+import components.ProductType;
+import components.VendingMachine;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,14 +20,27 @@ public class VendingMachineTest {
 
     @Test
     public void canAddProduct(){
-        vendingMachine.addProductToHashMap(ProductType.CRISPS, productDetails);
-        assertEquals(1, vendingMachine.getProductInformation().size());
+        vendingMachine.addProductToInventory(ProductType.CRISPS, productDetails);
+        assertEquals(1, vendingMachine.getInventory().size());
     }
     @Test
     public void canRemoveProduct(){
-        vendingMachine.addProductToHashMap(ProductType.CRISPS, productDetails);
-        vendingMachine.removeProductFromHashMap(ProductType.CRISPS);
+        vendingMachine.addProductToInventory(ProductType.CRISPS, productDetails);
+        vendingMachine.sellProduct(ProductType.CRISPS);
         assertEquals(3, vendingMachine.getNumberAvailableFromProductDetails(ProductType.CRISPS));
+    }
+    @Test
+    public void cantRemoveProduct(){
+        vendingMachine.addProductToInventory(ProductType.CRISPS, productDetails);
+        vendingMachine.sellProduct(ProductType.CRISPS);
+        vendingMachine.sellProduct(ProductType.CRISPS);
+        vendingMachine.sellProduct(ProductType.CRISPS);
+        vendingMachine.sellProduct(ProductType.CRISPS);
+        vendingMachine.sellProduct(ProductType.CRISPS);
+        vendingMachine.sellProduct(ProductType.CRISPS);
+        vendingMachine.sellProduct(ProductType.CRISPS);
+        vendingMachine.sellProduct(ProductType.CRISPS);
+        assertEquals(0, vendingMachine.getNumberAvailableFromProductDetails(ProductType.CRISPS));
     }
 
 }
