@@ -17,7 +17,6 @@ public class VendingMachineTest {
     public void before(){
         vendingMachine = new VendingMachine();
         productDetails = new ProductDetails("E7", 50, 4);
-
     }
 
     @Test
@@ -27,7 +26,6 @@ public class VendingMachineTest {
     }
     @Test
     public void canSellProduct(){
-        vendingMachine.addToBalance(Coin.TEN);
         vendingMachine.addToBalance(Coin.ONE_POUND);
         vendingMachine.addProductToInventory(ProductType.CRISPS, productDetails);
         vendingMachine.sellProduct(ProductType.CRISPS, "E7");
@@ -35,10 +33,10 @@ public class VendingMachineTest {
     }
     @Test
     public void cantRemoveProduct(){
+        vendingMachine.addToBalance(Coin.ONE_POUND);
+        vendingMachine.addToBalance(Coin.ONE_POUND);
+        vendingMachine.addToBalance(Coin.FIFTY);
         vendingMachine.addProductToInventory(ProductType.CRISPS, productDetails);
-        vendingMachine.sellProduct(ProductType.CRISPS, "E7");
-        vendingMachine.sellProduct(ProductType.CRISPS, "E7");
-        vendingMachine.sellProduct(ProductType.CRISPS, "E7");
         vendingMachine.sellProduct(ProductType.CRISPS, "E7");
         vendingMachine.sellProduct(ProductType.CRISPS, "E7");
         vendingMachine.sellProduct(ProductType.CRISPS, "E7");

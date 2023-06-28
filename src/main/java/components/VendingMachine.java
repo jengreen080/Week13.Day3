@@ -21,6 +21,10 @@ public class VendingMachine implements IManageInventory, IManageMoney {
         return inventory;
     }
 
+    public int getBalance() {
+        return balance;
+    }
+
     public void addProductToInventory(ProductType type, ProductDetails details){
         inventory.put(type,details);
     }
@@ -43,11 +47,6 @@ public class VendingMachine implements IManageInventory, IManageMoney {
         if (amount > 0 && checkIfBalanceIsGreaterThanPrice(type) && (productCode == code)){
         this.getProductDetails(type).setNumberAvailable((amount-1));
         }
-    }
-
-
-    public int getBalance() {
-        return balance;
     }
 
     public void addToBalance(Coin coin){
