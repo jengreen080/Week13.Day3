@@ -1,10 +1,9 @@
 package interfaces;
 
 import components.ProductDetails;
-import components.ProductType;
 
 public interface IManageInventory {
     public void addProductToInventory(ProductDetails details);
-    int sellProduct(String code);
+    int vend(String code);
 
 }

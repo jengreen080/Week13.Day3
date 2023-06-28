@@ -28,7 +28,7 @@ public class VendingMachineTest {
     public void canSellProduct(){
         vendingMachine.addToBalance(Coin.ONE_POUND);
         vendingMachine.addProductToInventory(productDetails);
-        vendingMachine.sellProduct("E7");
+        vendingMachine.vend("E7");
         assertEquals(3, vendingMachine.getNumberAvailableFromProductDetails("E7"));
     }
     @Test
@@ -37,11 +37,11 @@ public class VendingMachineTest {
         vendingMachine.addToBalance(Coin.ONE_POUND);
         vendingMachine.addToBalance(Coin.FIFTY);
         vendingMachine.addProductToInventory(productDetails);
-        vendingMachine.sellProduct("E7");
-        vendingMachine.sellProduct("E7");
-        vendingMachine.sellProduct("E7");
-        vendingMachine.sellProduct("E7");
-        vendingMachine.sellProduct("E7");
+        vendingMachine.vend("E7");
+        vendingMachine.vend("E7");
+        vendingMachine.vend("E7");
+        vendingMachine.vend("E7");
+        vendingMachine.vend("E7");
         assertEquals(0, vendingMachine.getNumberAvailableFromProductDetails("E7"));
     }
 
