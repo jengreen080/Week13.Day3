@@ -1,6 +1,8 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 public class VendingMachineTest {
 
     VendingMachine vendingMachine;
@@ -14,8 +16,15 @@ public class VendingMachineTest {
     }
 
     @Test
-    public void hasProducts(){
-        vendingMachine.getProductInformation().put(ProductType.CRISPS, productDetails),
+    public void canAddProduct(){
+        vendingMachine.addProductToHashMap(ProductType.CRISPS, productDetails);
         assertEquals(1, vendingMachine.getProductInformation().size());
     }
+    @Test
+    public void canRemoveProduct(){
+        vendingMachine.addProductToHashMap(ProductType.CRISPS, productDetails);
+        vendingMachine.removeProductFromHashMap(ProductType.CRISPS);
+        assertEquals(3, vendingMachine.getNumberAvailableFromProductDetails(ProductType.CRISPS));
+    }
+
 }

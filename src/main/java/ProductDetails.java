@@ -13,4 +13,12 @@ public class ProductDetails {
     public String getCode() {
         return code;
     }
+
+    public int getNumberAvailable() {
+        return numberAvailable;
+    }
+
+    public void setNumberAvailable(int numberAvailable) {
+        this.numberAvailable = numberAvailable;
+    }
 }
