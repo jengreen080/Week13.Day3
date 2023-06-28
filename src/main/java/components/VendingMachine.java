@@ -37,15 +37,21 @@ public class VendingMachine implements IManageInventory, IManageMoney {
         return this.getProductDetails(code).getNumberAvailable();
     }
 
+    public int getRemainderWhenBalanceLessThanPrice(String code){
+        return getBalance()- getProductDetails(code).getPrice();
+    }
+
+
     public boolean checkIfBalanceIsGreaterThanPrice(String code){
         return getBalance() > getProductDetails(code).getPrice();
     }
 
-    public void sellProduct(String code){
+    public int sellProduct(String code){
         int amount = this.getNumberAvailableFromProductDetails(code);
         if (amount > 0 && checkIfBalanceIsGreaterThanPrice(code)){
         this.getProductDetails(code).setNumberAvailable((amount-1));
-        }
+        }else {return getRemainderWhenBalanceLessThanPrice(code);}
+        return 0;
     }
 
     public void addToBalance(Coin coin){
