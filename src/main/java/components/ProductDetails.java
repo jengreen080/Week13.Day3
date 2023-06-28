@@ -23,4 +23,8 @@ public class ProductDetails {
     public void setNumberAvailable(int numberAvailable) {
         this.numberAvailable = numberAvailable;
     }
+
+    public int getPrice() {
+        return price;
+    }
 }

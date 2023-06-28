@@ -1,9 +1,11 @@
 package components;
 
 import interfaces.IManageInventory;
+import interfaces.IManageMoney;
+
 import java.util.HashMap;
 
-public class VendingMachine implements IManageInventory {
+public class VendingMachine implements IManageInventory, IManageMoney {
 
     private HashMap<ProductType, ProductDetails> inventory;
     private int balance;
@@ -30,11 +32,29 @@ public class VendingMachine implements IManageInventory {
     public int getNumberAvailableFromProductDetails(ProductType type){
         return this.getProductDetails(type).getNumberAvailable();
     }
+
+    public boolean checkIfBalanceIsGreaterThanPrice(ProductType type){
+        return getBalance() > getProductDetails(type).getPrice();
+    }
+
     public void sellProduct(ProductType type){
         int amount = this.getNumberAvailableFromProductDetails(type);
-        if (amount > 0){
+        if (amount > 0 && checkIfBalanceIsGreaterThanPrice(type)){
         this.getProductDetails(type).setNumberAvailable((amount-1));
         }
+    }
+
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void addToBalance(Coin coin){
+        balance += coin.getValue();
+    }
+
+    public void clearBalance(){
+        balance = 0;
     }
 }
 
