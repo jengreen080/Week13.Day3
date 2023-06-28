@@ -30,20 +30,20 @@ public class VendingMachineTest {
         vendingMachine.addToBalance(Coin.TEN);
         vendingMachine.addToBalance(Coin.ONE_POUND);
         vendingMachine.addProductToInventory(ProductType.CRISPS, productDetails);
-        vendingMachine.sellProduct(ProductType.CRISPS);
+        vendingMachine.sellProduct(ProductType.CRISPS, "E7");
         assertEquals(3, vendingMachine.getNumberAvailableFromProductDetails(ProductType.CRISPS));
     }
     @Test
     public void cantRemoveProduct(){
         vendingMachine.addProductToInventory(ProductType.CRISPS, productDetails);
-        vendingMachine.sellProduct(ProductType.CRISPS);
-        vendingMachine.sellProduct(ProductType.CRISPS);
-        vendingMachine.sellProduct(ProductType.CRISPS);
-        vendingMachine.sellProduct(ProductType.CRISPS);
-        vendingMachine.sellProduct(ProductType.CRISPS);
-        vendingMachine.sellProduct(ProductType.CRISPS);
-        vendingMachine.sellProduct(ProductType.CRISPS);
-        vendingMachine.sellProduct(ProductType.CRISPS);
+        vendingMachine.sellProduct(ProductType.CRISPS, "E7");
+        vendingMachine.sellProduct(ProductType.CRISPS, "E7");
+        vendingMachine.sellProduct(ProductType.CRISPS, "E7");
+        vendingMachine.sellProduct(ProductType.CRISPS, "E7");
+        vendingMachine.sellProduct(ProductType.CRISPS, "E7");
+        vendingMachine.sellProduct(ProductType.CRISPS, "E7");
+        vendingMachine.sellProduct(ProductType.CRISPS, "E7");
+        vendingMachine.sellProduct(ProductType.CRISPS, "E7");
         assertEquals(0, vendingMachine.getNumberAvailableFromProductDetails(ProductType.CRISPS));
     }
 

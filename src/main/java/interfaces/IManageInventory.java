@@ -5,6 +5,6 @@ import components.ProductType;
 
 public interface IManageInventory {
     public void addProductToInventory(ProductType type, ProductDetails details);
-    void sellProduct(ProductType type);
+    void sellProduct(ProductType type, String code);
 
 }
