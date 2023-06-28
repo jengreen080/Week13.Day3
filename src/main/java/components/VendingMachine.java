@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class VendingMachine implements IManageInventory, IManageMoney {
 
-    private HashMap<ProductType, ProductDetails> inventory;
+    private HashMap<String, ProductDetails> inventory;
     private int balance;
     private HashMap<Coin, Integer> vendingMachineFloat;
 
@@ -17,7 +17,7 @@ public class VendingMachine implements IManageInventory, IManageMoney {
         this.vendingMachineFloat = new HashMap<>();
     }
 
-    public HashMap<ProductType, ProductDetails> getInventory() {
+    public HashMap<String, ProductDetails> getInventory() {
         return inventory;
     }
 
@@ -25,27 +25,26 @@ public class VendingMachine implements IManageInventory, IManageMoney {
         return balance;
     }
 
-    public void addProductToInventory(ProductType type, ProductDetails details){
-        inventory.put(type,details);
+    public void addProductToInventory(ProductDetails details){
+        inventory.put(details.getCode(),details);
     }
 
-    public ProductDetails getProductDetails(ProductType type){
-        return inventory.get(type);
+        public ProductDetails getProductDetails(String code){
+        return inventory.get(code);
     }
 
-    public int getNumberAvailableFromProductDetails(ProductType type){
-        return this.getProductDetails(type).getNumberAvailable();
+    public int getNumberAvailableFromProductDetails(String code){
+        return this.getProductDetails(code).getNumberAvailable();
     }
 
-    public boolean checkIfBalanceIsGreaterThanPrice(ProductType type){
-        return getBalance() > getProductDetails(type).getPrice();
+    public boolean checkIfBalanceIsGreaterThanPrice(String code){
+        return getBalance() > getProductDetails(code).getPrice();
     }
 
-    public void sellProduct(ProductType type, String code){
-        String productCode = getProductDetails(type).getCode();
-        int amount = this.getNumberAvailableFromProductDetails(type);
-        if (amount > 0 && checkIfBalanceIsGreaterThanPrice(type) && (productCode == code)){
-        this.getProductDetails(type).setNumberAvailable((amount-1));
+    public void sellProduct(String code){
+        int amount = this.getNumberAvailableFromProductDetails(code);
+        if (amount > 0 && checkIfBalanceIsGreaterThanPrice(code)){
+        this.getProductDetails(code).setNumberAvailable((amount-1));
         }
     }
 

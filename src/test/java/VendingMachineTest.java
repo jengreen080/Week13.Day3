@@ -16,33 +16,33 @@ public class VendingMachineTest {
     @Before
     public void before(){
         vendingMachine = new VendingMachine();
-        productDetails = new ProductDetails("E7", 50, 4);
+        productDetails = new ProductDetails("E7", ProductType.CRISPS, 50, 4);
     }
 
     @Test
     public void canAddProduct(){
-        vendingMachine.addProductToInventory(ProductType.CRISPS, productDetails);
+        vendingMachine.addProductToInventory(productDetails);
         assertEquals(1, vendingMachine.getInventory().size());
     }
     @Test
     public void canSellProduct(){
         vendingMachine.addToBalance(Coin.ONE_POUND);
-        vendingMachine.addProductToInventory(ProductType.CRISPS, productDetails);
-        vendingMachine.sellProduct(ProductType.CRISPS, "E7");
-        assertEquals(3, vendingMachine.getNumberAvailableFromProductDetails(ProductType.CRISPS));
+        vendingMachine.addProductToInventory(productDetails);
+        vendingMachine.sellProduct("E7");
+        assertEquals(3, vendingMachine.getNumberAvailableFromProductDetails("E7"));
     }
     @Test
     public void cantRemoveProduct(){
         vendingMachine.addToBalance(Coin.ONE_POUND);
         vendingMachine.addToBalance(Coin.ONE_POUND);
         vendingMachine.addToBalance(Coin.FIFTY);
-        vendingMachine.addProductToInventory(ProductType.CRISPS, productDetails);
-        vendingMachine.sellProduct(ProductType.CRISPS, "E7");
-        vendingMachine.sellProduct(ProductType.CRISPS, "E7");
-        vendingMachine.sellProduct(ProductType.CRISPS, "E7");
-        vendingMachine.sellProduct(ProductType.CRISPS, "E7");
-        vendingMachine.sellProduct(ProductType.CRISPS, "E7");
-        assertEquals(0, vendingMachine.getNumberAvailableFromProductDetails(ProductType.CRISPS));
+        vendingMachine.addProductToInventory(productDetails);
+        vendingMachine.sellProduct("E7");
+        vendingMachine.sellProduct("E7");
+        vendingMachine.sellProduct("E7");
+        vendingMachine.sellProduct("E7");
+        vendingMachine.sellProduct("E7");
+        assertEquals(0, vendingMachine.getNumberAvailableFromProductDetails("E7"));
     }
 
     @Test
